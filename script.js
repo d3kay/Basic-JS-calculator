@@ -1,3 +1,4 @@
+//calculators opertaion class
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement
@@ -13,16 +14,20 @@ class Calculator {
 
     }
     appendNumber(number) {
-        this.currentOperand = number
+        if (number === "." && this.currentOperand.includes(".")) return //so that " . " doesnot get overwritten by user
+        this.currentOperand = this.currentOperand.toString() + number.toString() //adds the integar values
     }
     chooseOperation(operation) {
-
+        this.operation = operation
+        this.previousOperand = this.currentOperand
+        this.currentOperand = ""
     }
     compute() {
 
     }
     updateDisplay () {
         this.currentOperandTextElement.innerText = this.currentOperand
+        this.previousOperandTextElement.innerText = this.previousOperand
     }
 }
 
@@ -55,6 +60,13 @@ const calculator = new Calculator(previousOperandTextElement, currentOperandText
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText)
+        calculator.updateDisplay()
+    })
+})
+
+operationsButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText)
         calculator.updateDisplay()
     })
 })
