@@ -57,6 +57,8 @@ class Calculator {
     }
 }
 
+//putting html dom elements on js variables
+
 const previousOperandTextElement = document.querySelector (
     "[data-previous-operand]"
 )
