@@ -3,9 +3,11 @@
     src: url(Varela-Regular.ttf);
 }
 
+/*  "*" = universal selectors (applies to all element) */
+
 *, *::before, *::after {
     box-sizing: border-box;
-    font-family: Varela;
+    font-family: Varela, sans-serif;
     font-weight: normal;
 }
 
@@ -26,7 +28,7 @@ body {
 
 .calculator-grid > button {
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 2rem;  /* 1rem = 16px */
     border: 1px solid rgba(202, 202, 202, 0.555);
     outline: none;
     background-color: rgba(255, 255, 255, 0.575);
