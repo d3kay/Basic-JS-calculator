@@ -11,7 +11,7 @@ class Calculator {
         this.operation = undefined
     } 
     delete() {
-
+        this.currentOperand = this.currentOperand.toString().slice(0, -1)
     }
     appendNumber(number) {
         if (number === "." && this.currentOperand.includes(".")) return //so that " . " doesnot get overwritten by user
@@ -30,7 +30,7 @@ class Calculator {
         let computation
         const previous = parseFloat(this.previousOperand)
         const current = parseFloat(this.currentOperand)
-        if (isNaN(previous) || isNaN(current)) return
+        if (isNaN(previous) || isNaN(current)) return //NaN = not a number
         switch(this.operation) {
             case "+":
                 computation = previous + current
@@ -105,6 +105,11 @@ equalButton.addEventListener("click", button => {
 })
 
 allClearButton.addEventListener("click", button => {
-    calculator.clear()
+    calculator.allClear()
+    calculator.updateDisplay()
+})
+
+deleteButton.addEventListener("click", button => {
+    calculator.delete()
     calculator.updateDisplay()
 })
